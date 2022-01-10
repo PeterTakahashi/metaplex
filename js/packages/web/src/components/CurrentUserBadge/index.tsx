@@ -21,6 +21,7 @@ import {
 import { useMeta, useSolPrice } from '../../contexts';
 import { useTokenList } from '../../contexts/tokenList';
 import { TokenCircle } from '../Custom';
+import { i18n } from "@lingui/core"
 
 ('@solana/wallet-adapter-base');
 
@@ -54,7 +55,7 @@ const UserActions = (props: { mobile?: boolean; onClick?: any }) => {
                   }}
                   className="black-btn"
                 >
-                  Create
+                  {i18n._("Create")}
                 </Button>
               </Link>
             )}
@@ -65,7 +66,7 @@ const UserActions = (props: { mobile?: boolean; onClick?: any }) => {
                 }}
                 className="black-btn"
               >
-                Sell
+                {i18n._("Sell")}
               </Button>
             </Link>
           </div>
@@ -79,7 +80,7 @@ const UserActions = (props: { mobile?: boolean; onClick?: any }) => {
               <>
                 <Link to={`/art/create`} style={{ width: '100%' }}>
                   <Button className="metaplex-button-default" style={btnStyle}>
-                    Create
+                    {i18n._("Create")}
                   </Button>
                 </Link>
                 &nbsp;&nbsp;
@@ -87,7 +88,7 @@ const UserActions = (props: { mobile?: boolean; onClick?: any }) => {
             )}
             <Link to={`/auction/create/0`} style={{ width: '100%' }}>
               <Button className="metaplex-button-default" style={btnStyle}>
-                Sell
+                {i18n._("Sell")}
               </Button>
             </Link>
           </div>
@@ -106,7 +107,7 @@ const AddFundsModal = (props: {
     <MetaplexModal
       visible={props.showAddFundsModal}
       onCancel={() => props.setShowAddFundsModal(false)}
-      title="Add Funds"
+      title={i18n._('Add Funds')}
       bodyStyle={{
         alignItems: 'start',
       }}
@@ -259,7 +260,7 @@ export const CurrentUserBadge = (props: {
                     letterSpacing: '0.02em',
                   }}
                 >
-                  BALANCE
+                  {i18n._("BALANCE")}
                 </h5>
                 <div
                   style={{
@@ -299,7 +300,7 @@ export const CurrentUserBadge = (props: {
                     onClick={() => setShowAddFundsModal(true)}
                     style={btnStyle}
                   >
-                    Add Funds
+                    {i18n._('Add Funds')}
                   </Button>
                   &nbsp;&nbsp;
                   <Button
@@ -307,7 +308,7 @@ export const CurrentUserBadge = (props: {
                     onClick={disconnect}
                     style={btnStyle}
                   >
-                    Disconnect
+                    {i18n._('Disconnect')}
                   </Button>
                 </div>
                 <UserActions />
@@ -408,7 +409,7 @@ export const Cog = () => {
               style={btnStyle}
               onClick={open}
             >
-              Change wallet
+              {i18n._("Change wallet")}
             </Button>
           </div>
         }
@@ -473,7 +474,7 @@ export const CurrentUserBadgeMobile = (props: {
         )}
       </div>
       <div className="balance-container">
-        <span className="balance-title">Balance</span>
+        <span className="balance-title">{i18n._("Balance")}</span>
         <span>
           <span className="sol-img-wrapper">
             <img src="/sol.svg" width="10" />
@@ -498,11 +499,11 @@ export const CurrentUserBadgeMobile = (props: {
             setShowAddFundsModal(true);
           }}
         >
-          Add Funds
+          {i18n._('Add Funds')}
         </Button>
         &nbsp;&nbsp;
         <Button className="black-btn" onClick={disconnect}>
-          Disconnect
+          {i18n._('Disconnect')}
         </Button>
       </div>
       <div className="actions-buttons">

@@ -13,17 +13,19 @@ import {
 } from '../CurrentUserBadge';
 import { ConnectButton } from '@oyster/common';
 import { MobileNavbar } from '../MobileNavbar';
+import { LABELS } from '../../constants';
+import { i18n } from "@lingui/core";
 
 const getDefaultLinkActions = (connected: boolean) => {
   return [
     <Link to={`/`} key={'explore'}>
-      <Button className="app-btn">Explore</Button>
+      <Button className="app-btn">{i18n._("Explore")}</Button>
     </Link>,
     <Link to={`/artworks`} key={'artwork'}>
-      <Button className="app-btn">{connected ? 'My Items' : 'Artwork'}</Button>
+      <Button className="app-btn">{connected ? i18n._('My Items') : i18n._('Artwork')}</Button>
     </Link>,
     <Link to={`/artists`} key={'artists'}>
-      <Button className="app-btn">Creators</Button>
+      <Button className="app-btn">{i18n._('Creators')}</Button>
     </Link>,
   ];
 };
@@ -110,7 +112,7 @@ export const MetaplexMenu = () => {
 export const LogoLink = () => {
   return (
     <Link to={`/`}>
-      <img src={'/metaplex-logo.svg'} />
+      <h2>{LABELS.STORE_NAME}</h2>
     </Link>
   );
 };

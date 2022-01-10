@@ -2,6 +2,7 @@ import { useWallet } from '@solana/wallet-adapter-react';
 import { Col, Layout, Row, Tabs } from 'antd';
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
+import { i18n } from "@lingui/core"
 
 import { useMeta } from '../../../../contexts';
 import { CardLoader } from '../../../../components/MyLoader';
@@ -10,6 +11,8 @@ import { HowToBuyModal } from '../../../../components/HowToBuyModal';
 
 import { useAuctionsList } from './hooks/useAuctionsList';
 import { AuctionRenderCard } from '../../../../components/AuctionRenderCard';
+
+import { LABELS } from '../../../../constants';
 
 const { TabPane } = Tabs;
 const { Content } = Layout;
@@ -31,8 +34,8 @@ export const SalesListView = () => {
     <>
       <Banner
         src="/main-banner.svg"
-        headingText="The amazing world of Metaplex."
-        subHeadingText="Buy exclusive Metaplex NFTs."
+        headingText={i18n._("The amazing world of {name}", { name: LABELS.STORE_NAME })}
+        subHeadingText={i18n._("Buy exclusive {name} NFTs.", { name: LABELS.STORE_NAME })}
         actionComponent={<HowToBuyModal buttonClassName="secondary-btn" />}
         useBannerBg
       />
@@ -47,21 +50,21 @@ export const SalesListView = () => {
                 <TabPane
                   tab={
                     <>
-                      <span className="live"></span> Live
+                      <span className="live"></span> {i18n._("Live")}
                     </>
                   }
                   key={LiveAuctionViewState.All}
                 ></TabPane>
                 {hasResaleAuctions && (
                   <TabPane
-                    tab="Secondary Marketplace"
+                    tab={i18n._("Secondary Marketplace")}
                     key={LiveAuctionViewState.Resale}
                   ></TabPane>
                 )}
-                <TabPane tab="Ended" key={LiveAuctionViewState.Ended}></TabPane>
+                <TabPane tab={i18n._("Ended")} key={LiveAuctionViewState.Ended}></TabPane>
                 {connected && (
                   <TabPane
-                    tab="Participated"
+                    tab={i18n._("Participated")}
                     key={LiveAuctionViewState.Participated}
                   ></TabPane>
                 )}

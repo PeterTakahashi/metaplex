@@ -65,6 +65,7 @@ import { useInstantSaleState } from './hooks/useInstantSaleState';
 import { useTokenList } from '../../contexts/tokenList';
 import { FundsIssueModal } from "../FundsIssueModal";
 import CongratulationsModal from '../Modals/CongratulationsModal';
+import { i18n } from "@lingui/core";
 
 async function calculateTotalCostOfRedeemingOtherPeoplesBids(
   connection: Connection,
@@ -604,7 +605,7 @@ export const AuctionCard = ({
           {showPlaceBid ? (
             <div className="show-place-bid">
               <AmountLabel
-                title="in your wallet"
+                title={i18n._("in your wallet")}
                 displaySymbol={tokenInfo?.symbol || 'CUSTOM'}
                 style={{ marginBottom: 0 }}
                 amount={balance.balance}
@@ -874,7 +875,7 @@ export const AuctionCard = ({
             marginBottom: 20,
           }}
         >
-          Congratulations
+          {i18n._("Congratulations")}
         </h1>
         <p
           style={{
@@ -883,14 +884,14 @@ export const AuctionCard = ({
             fontSize: '2rem',
           }}
         >
-          Your sale has been ended please view your NFTs in{' '}
-          <Link to="/artworks">My Items</Link>.
+          {i18n._("Your sale has been ended please view your NFTs in")}{' '}
+          <Link to="/artworks">{i18n._("My Items")}</Link>.
         </p>
         <Button
           onClick={() => setShowEndingBidModal(false)}
           className="overlay-btn"
         >
-          Got it
+          {i18n._("Got it")}
         </Button>
       </MetaplexOverlay>
 
@@ -903,7 +904,7 @@ export const AuctionCard = ({
             marginBottom: 20,
           }}
         >
-          Congratulations
+          {i18n._("Congratulations")}
         </h1>
         <p
           style={{
@@ -920,7 +921,7 @@ export const AuctionCard = ({
           onClick={() => setShowRedeemedBidModal(false)}
           className="overlay-btn"
         >
-          Got it
+          {i18n._("Got it")}
         </Button>
       </MetaplexOverlay>
 
