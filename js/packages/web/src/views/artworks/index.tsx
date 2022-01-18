@@ -10,6 +10,7 @@ import ItemCard from './components/ItemCard';
 import { useUserAccounts } from '@oyster/common';
 import { DownOutlined } from '@ant-design/icons';
 import { isMetadata, isPack } from './utils';
+import { i18n } from "@lingui/core"
 
 const { TabPane } = Tabs;
 const { Content } = Layout;
@@ -70,12 +71,12 @@ export const ArtworksView = () => {
       overlay={
         <Menu className="gray-dropdown">
           <Menu.Item onClick={() => pullAllMetadata()}>
-            Load All Metadata
+            {i18n._("Load All Metadata")}
           </Menu.Item>
         </Menu>
       }
     >
-      Refresh
+      {i18n._("Refresh")}
     </Dropdown.Button>
   );
 
@@ -90,14 +91,14 @@ export const ArtworksView = () => {
               tabBarExtraContent={refreshButton}
             >
               <TabPane
-                tab={<span className="tab-title">All</span>}
+                tab={<span className="tab-title">{i18n._("All")}</span>}
                 key={ArtworkViewState.Metaplex}
               >
                 {artworkGrid}
               </TabPane>
               {connected && (
                 <TabPane
-                  tab={<span className="tab-title">Owned</span>}
+                  tab={<span className="tab-title">{i18n._("Owned")}</span>}
                   key={ArtworkViewState.Owned}
                 >
                   {artworkGrid}
@@ -105,7 +106,7 @@ export const ArtworksView = () => {
               )}
               {connected && (
                 <TabPane
-                  tab={<span className="tab-title">Created</span>}
+                  tab={<span className="tab-title">{i18n._("Created")}</span>}
                   key={ArtworkViewState.Created}
                 >
                   {artworkGrid}

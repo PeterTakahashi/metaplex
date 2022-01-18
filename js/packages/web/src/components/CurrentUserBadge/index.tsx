@@ -21,7 +21,8 @@ import {
 import { useMeta, useSolPrice } from '../../contexts';
 import { useTokenList } from '../../contexts/tokenList';
 import { TokenCircle } from '../Custom';
-import { i18n } from "@lingui/core"
+import { i18n } from "@lingui/core";
+import { LANGUAGES } from '../../constants/languages';
 
 ('@solana/wallet-adapter-base');
 
@@ -364,7 +365,7 @@ export const Cog = () => {
                 letterSpacing: '0.02em',
               }}
             >
-              NETWORK
+              {i18n._('NETWORK')}
             </h5>
             <Select
               onSelect={network => {
@@ -397,9 +398,37 @@ export const Cog = () => {
                 marginBottom: 10,
               }}
             >
-              {ENDPOINTS.map(({ name }) => (
-                <Select.Option value={name} key={endpoint.name}>
+              {ENDPOINTS.map(({ name }, index) => (
+                <Select.Option value={name} key={index}>
                   {name}
+                </Select.Option>
+              ))}
+            </Select>
+
+            <h5
+              style={{
+                color: 'rgba(255, 255, 255, 0.7)',
+                letterSpacing: '0.02em',
+              }}
+            >
+              {i18n._('LANGUAGE')}
+            </h5>
+            <Select
+              onSelect={language => {
+                i18n.activate(language);
+              }}
+              value={i18n.locale}
+              bordered={false}
+              style={{
+                background: 'rgba(255, 255, 255, 0.05)',
+                borderRadius: 8,
+                width: '100%',
+                marginBottom: 10,
+              }}
+            >
+              {LANGUAGES.map(({ name, displayName }, index) => (
+                <Select.Option value={name} key={index}>
+                  {displayName}
                 </Select.Option>
               ))}
             </Select>

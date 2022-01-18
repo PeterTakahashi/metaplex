@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { ArtCard } from '../../components/ArtCard';
 import { CardLoader } from '../../components/MyLoader';
 import { useCreator, useCreatorArts } from '../../hooks';
+import { i18n } from "@lingui/core"
 
 export const ArtistView = () => {
   const { id } = useParams<{ id: string }>();
@@ -43,10 +44,10 @@ export const ArtistView = () => {
               {creator?.info.name || creator?.info.address}
             </h2>
             <br />
-            <div className="info-header">ABOUT THE CREATOR</div>
+            <div className="info-header">{i18n._("ABOUT THE CREATOR")}</div>
             <div className="info-content">{creator?.info.description}</div>
             <br />
-            <div className="info-header">Art Created</div>
+            <div className="info-header">{i18n._("Art Created")}</div>
             {artworkGrid}
           </Col>
         </Row>
