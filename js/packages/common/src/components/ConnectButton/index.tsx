@@ -3,6 +3,7 @@ import { ButtonProps } from 'antd/lib/button';
 import React, { useCallback } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { useWalletModal } from '../../contexts';
+import { i18n } from "@lingui/core"
 
 export interface ConnectButtonProps
   extends ButtonProps,
@@ -35,7 +36,7 @@ export const ConnectButton = (props: ConnectButtonProps) => {
         }}
         disabled={connected && disabled}
       >
-        {connected ? children : 'Connect Wallet'}
+        {connected ? children : i18n._('Connect Wallet')}
       </Button>
     );
   }
@@ -47,11 +48,11 @@ export const ConnectButton = (props: ConnectButtonProps) => {
       disabled={connected && disabled}
       overlay={
         <Menu className={'black-dropdown'}>
-          <Menu.Item onClick={open}>Change Wallet</Menu.Item>
+          <Menu.Item onClick={open}>{i18n._('Change Wallet')}</Menu.Item>
         </Menu>
       }
     >
-      Connect
+      {i18n._("Connect")}
     </Dropdown.Button>
   );
 };

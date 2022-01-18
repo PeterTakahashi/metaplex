@@ -40,6 +40,7 @@ import { MetaAvatar, MetaAvatarDetailed } from '../../components/MetaAvatar';
 import { AmountLabel } from '../../components/AmountLabel';
 import { ClickToCopy } from '../../components/ClickToCopy';
 import { useTokenList } from '../../contexts/tokenList';
+import { i18n } from "@lingui/core";
 
 export const AuctionItem = ({
   item,
@@ -479,7 +480,7 @@ const BidLine = (props: {
               <a
                 target="_blank"
                 title={shortenAddress(bidder)}
-                href={`https://twitter.com/${bidderTwitterHandle}`}
+                href={`https://twitter.com/${bidderTwitterHandle}`} rel="noreferrer"
               >{`@${bidderTwitterHandle}`}</a>
             ) : (
               shortenAddress(bidder)
@@ -573,7 +574,7 @@ const BidLine = (props: {
                   <a
                     target="_blank"
                     title={shortenAddress(bidder)}
-                    href={`https://twitter.com/${bidderTwitterHandle}`}
+                    href={`https://twitter.com/${bidderTwitterHandle}`} rel="noreferrer"
                   >{`@${bidderTwitterHandle}`}</a>
                   <ClickToCopy
                     className="copy-pubkey"
@@ -649,7 +650,7 @@ export const AuctionBids = ({
   return (
     <Row>
       <Col className="bids-lists">
-        <h6 className={'info-title'}>Bid History</h6>
+        <h6 className={'info-title'}>{i18n._("Bid history")}</h6>
         {bidLines.slice(0, 10)}
         {bids.length > 10 && (
           <div
@@ -659,13 +660,13 @@ export const AuctionBids = ({
               cursor: 'pointer',
             }}
           >
-            View full history
+            {i18n._("View full history")}
           </div>
         )}
         <MetaplexModal
           visible={showHistoryModal}
           onCancel={() => setShowHistoryModal(false)}
-          title="Bid history"
+          title={i18n._("Bid history")}
           bodyStyle={{
             background: 'unset',
             boxShadow: 'unset',

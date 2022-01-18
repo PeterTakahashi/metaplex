@@ -1,5 +1,6 @@
 import { AuctionView } from '../../../hooks';
 import { useInstantSaleState } from './useInstantSaleState';
+import { i18n } from "@lingui/core"
 
 export const useActionButtonContent = (auctionView: AuctionView): string => {
   const {
@@ -10,20 +11,20 @@ export const useActionButtonContent = (auctionView: AuctionView): string => {
   } = useInstantSaleState(auctionView);
 
   if (!isInstantSale) {
-    return 'Place Bid';
+    return i18n._('Place Bid');
   }
 
   if (canClaimPurchasedItem) {
-    return 'Claim Purchase';
+    return i18n._('Claim Purchase');
   }
 
   if (canClaimItem) {
-    return 'Claim item';
+    return i18n._('Claim item');
   }
 
   if (canEndInstantSale) {
-    return 'End sale & claim item';
+    return i18n._('End sale & claim item');
   }
 
-  return 'Buy now';
+  return i18n._('Buy now');
 };

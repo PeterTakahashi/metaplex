@@ -8,6 +8,7 @@ import { notify, shortenAddress } from '../../utils';
 import { CopyOutlined } from '@ant-design/icons';
 import { Identicon } from '../Identicon';
 import { Link } from 'react-router-dom';
+import { i18n } from "@lingui/core"
 
 export const Settings = ({
   additionalSettings,
@@ -37,7 +38,7 @@ export const Settings = ({
         />
         {publicKey && (
           <>
-            <Tooltip title="Address copied">
+            <Tooltip title={i18n._("Address copied")}>
               <div
                 style={{
                   fontWeight: 600,

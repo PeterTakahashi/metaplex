@@ -27,6 +27,7 @@ import React, {
 } from 'react';
 import { notify } from '../utils';
 import { MetaplexModal } from '../components';
+import { i18n } from "@lingui/core";
 
 const { Panel } = Collapse;
 
@@ -66,7 +67,7 @@ export const WalletModal: FC = () => {
           marginBottom: 14,
         }}
       >
-        RECOMMENDED
+        {i18n._("RECOMMENDED")}
       </span>
 
       <Button
@@ -78,7 +79,7 @@ export const WalletModal: FC = () => {
         }}
       >
         <img src={phatomWallet?.icon} style={{ width: '1.2rem' }} />
-        &nbsp;Connect to Phantom
+        &nbsp;{i18n._("Connect to Phantom")}
       </Button>
       <Collapse
         ghost
@@ -129,7 +130,7 @@ export const WalletModal: FC = () => {
                 color: 'rgba(255, 255, 255, 255)',
               }}
             >
-              Other Wallets
+              {i18n._("Other Wallets")}
             </span>
           }
           key="1"
@@ -149,7 +150,7 @@ export const WalletModal: FC = () => {
                   close();
                 }}
               >
-                Connect to {wallet.name}
+                {i18n._("Connect to {name}", { name: wallet.name })}
               </Button>
             );
           })}
@@ -178,7 +179,7 @@ export const WalletModalProvider: FC<{ children: ReactNode }> = ({
           : base58;
 
       notify({
-        message: 'Wallet update',
+        message: i18n._('Wallet update'),
         description: 'Connected to wallet ' + keyToDisplay,
       });
     }
@@ -187,8 +188,8 @@ export const WalletModalProvider: FC<{ children: ReactNode }> = ({
   useEffect(() => {
     if (!publicKey && connected) {
       notify({
-        message: 'Wallet update',
-        description: 'Disconnected from wallet',
+        message: i18n._('Wallet update'),
+        description: i18n._('Disconnected from wallet'),
       });
     }
     setConnected(!!publicKey);
@@ -231,7 +232,7 @@ export const WalletProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const onError = useCallback((error: WalletError) => {
     console.error(error);
     notify({
-      message: 'Wallet error',
+      message: i18n._('Wallet error'),
       description: error.message,
     });
   }, []);
