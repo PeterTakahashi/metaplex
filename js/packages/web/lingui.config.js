@@ -13,8 +13,8 @@ module.exports = {
   formatOptions: { origins: false, lineNumbers: false },
   sourceLocale: 'en',
   locales: [
-    'ja',
     'en',
+    'ja',
   ],
   orderBy: 'messageId',
   pseudoLocale: '',

@@ -3,6 +3,10 @@ const withLess = require('next-with-less');
 
 const assetPrefix = process.env.ASSET_PREFIX || '';
 
+const linguiConfig = require('./lingui.config.js')
+
+const { locales, sourceLocale } = linguiConfig
+
 const plugins = [
   [
     withLess,
@@ -22,10 +26,26 @@ const plugins = [
 ];
 
 module.exports = withPlugins(plugins, {
+  webpack: (config) => {
+    config.module.rules = [
+      ...config.module.rules,
+      {
+        resourceQuery: /raw-lingui/,
+        type: 'javascript/auto',
+      },
+    ]
+
+    return config
+  },
   assetPrefix,
   reactStrictMode: true,
   eslint: {
     ignoreDuringBuilds: true,
+  },
+  i18n: {
+    localeDetection: true,
+    locales,
+    defaultLocale: sourceLocale,
   },
 
   env: {

@@ -2,7 +2,7 @@ import { InstructionsModal } from '../InstructionsModal';
 import React from 'react';
 import { LABELS } from '../../constants';
 import { ConnectButton } from '@oyster/common';
-import { i18n } from "@lingui/core"
+import { i18n } from "@lingui/core";
 
 interface HowToBuyModalProps {
   buttonClassName: string;
