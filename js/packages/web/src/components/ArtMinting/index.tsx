@@ -150,13 +150,13 @@ export const ArtMinting = ({ id, onMint }: ArtMintingProps) => {
             style={{ marginTop: 20 }}
             onClick={() => setShowMintModal(true)}
           >
-            {i18n._("Mint")}
+            {/*i18n*/ i18n._("Mint")}
           </Button>
 
           <Modal
             visible={showMintModal}
             centered
-            okText={i18n._("Mint")}
+            okText={/*i18n*/ i18n._("Mint")}
             closable={!isLoading}
             okButtonProps={{
               disabled: isMintingDisabled,
@@ -173,14 +173,14 @@ export const ArtMinting = ({ id, onMint }: ArtMintingProps) => {
                 paddingTop: 30,
                 marginBottom: 4,
               }}
-              label={<h3 style={{ color: 'white' }}>{i18n._("Mint to")}</h3>}
+              label={<h3 style={{ color: 'white' }}>{/*i18n*/ i18n._("Mint to")}</h3>}
               labelAlign="left"
               colon={false}
               validateStatus={mintingDestinationErr ? 'error' : 'success'}
               help={mintingDestinationErr}
             >
               <Input
-                placeholder={i18n._("Address to mint edition to")}
+                placeholder={/*i18n*/ i18n._("Address to mint edition to")}
                 value={mintingDestination}
                 onChange={e => {
                   setMintingDestination(e.target.value);
@@ -195,7 +195,7 @@ export const ArtMinting = ({ id, onMint }: ArtMintingProps) => {
                 paddingTop: 30,
               }}
               label={
-                <h3 style={{ color: 'white' }}>{i18n._("Number of editions to mint")}</h3>
+                <h3 style={{ color: 'white' }}>{/*i18n*/ i18n._("Number of editions to mint")}</h3>
               }
               labelAlign="left"
               colon={false}
@@ -234,7 +234,7 @@ export const ArtMinting = ({ id, onMint }: ArtMintingProps) => {
               />
             </Form.Item>
 
-            <div>{i18n._("Total cost")}: {`◎${totalCost}`}</div>
+            <div>{/*i18n*/ i18n._("Total cost")}: {`◎${totalCost}`}</div>
           </Modal>
 
           <MetaplexOverlay visible={showCongrats}>
@@ -246,7 +246,7 @@ export const ArtMinting = ({ id, onMint }: ArtMintingProps) => {
                 marginBottom: 20,
               }}
             >
-              {i18n._("Congratulations")}
+              {/*i18n*/ i18n._("Congratulations")}
             </h1>
             <p
               style={{
@@ -255,8 +255,8 @@ export const ArtMinting = ({ id, onMint }: ArtMintingProps) => {
                 fontSize: '2rem',
               }}
             >
-              {i18n._("New editions have been minted please view your NFTs in")}{' '}
-              <Link to="/artworks">{i18n._("My Items")}</Link>.
+              {/*i18n*/ i18n._("New editions have been minted please view your NFTs in")}{' '}
+              <Link to="/artworks">{/*i18n*/ i18n._("My Items")}</Link>.
             </p>
             <Button
               onClick={async () => {
@@ -265,7 +265,7 @@ export const ArtMinting = ({ id, onMint }: ArtMintingProps) => {
               }}
               className="overlay-btn"
             >
-              {i18n._("Got it")}
+              {/*i18n*/ i18n._("Got it")}
             </Button>
           </MetaplexOverlay>
         </div>

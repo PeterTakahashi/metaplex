@@ -509,7 +509,7 @@ export const AuctionCard = ({
       <div className={'time-info'}>
         {!auctionView.isInstantSale && (
           <>
-            <span>{i18n._("Auction ends in")}</span>
+            <span>{/*i18n*/ i18n._("Auction ends in")}</span>
             <div>
               <AuctionCountdown auctionView={auctionView} labels={false} />
             </div>
@@ -590,14 +590,14 @@ export const AuctionCard = ({
                 !myPayingAccount ? (
                   <Spin />
                 ) : eligibleForAnything ? (
-                  i18n._('Redeem bid')
+                  /*i18n*/ i18n._('Redeem bid')
                 ) : (
                   `${
                     wallet?.publicKey &&
                     auctionView.auctionManager.authority ===
                       wallet.publicKey.toBase58()
-                      ? i18n._('Reclaim Items')
-                      : i18n._('Refund bid')
+                      ? /*i18n*/ i18n._('Reclaim Items')
+                      : /*i18n*/ i18n._('Refund bid')
                   }`
                 )}
               </Button>
@@ -605,7 +605,7 @@ export const AuctionCard = ({
           {showPlaceBid ? (
             <div className="show-place-bid">
               <AmountLabel
-                title={i18n._("in your wallet")}
+                title={/*i18n*/ i18n._("in your wallet")}
                 displaySymbol={tokenInfo?.symbol || 'CUSTOM'}
                 style={{ marginBottom: 0 }}
                 amount={balance.balance}
@@ -644,7 +644,7 @@ export const AuctionCard = ({
                     }}
                     style={{ marginTop: 20 }}
                   >
-                    {loading ? <Spin /> :  i18n._('Start auction')}
+                    {loading ? <Spin /> :  /*i18n*/ i18n._('Start auction')}
                   </Button>
                 ) : (
                   !showPlaceBid && (
@@ -655,7 +655,7 @@ export const AuctionCard = ({
                         else connect();
                       }}
                     >
-                      {i18n._("Place Bid")}
+                      {/*i18n*/ i18n._("Place Bid")}
                     </Button>
                   )
                 ))}
@@ -689,7 +689,7 @@ export const AuctionCard = ({
                   color: 'rgba(255, 255, 255, 0.7)',
                 }}
               >
-                {i18n._("your bid")}
+                {/*i18n*/ i18n._("your bid")}
               </div>
               <div className={'bid-container'}>
                 <div
@@ -714,8 +714,8 @@ export const AuctionCard = ({
                     }
                     placeholder={
                       minBid === 0
-                        ? i18n._(`Place a Bid`)
-                        : `Bid ${minBid} ${symbol} or more`
+                        ? /*i18n*/ i18n._('Place a Bid')
+                        : /*i18n*/ i18n._('Bid {minBid} {symbol} or more', { minBid: minBid, symbol: symbol })
                     }
                   />
                 </div>
@@ -733,7 +733,7 @@ export const AuctionCard = ({
                     disabled={loading}
                     onClick={() => setShowPlaceBid(false)}
                   >
-                    {i18n._('Cancel')}
+                    {/*i18n*/ i18n._('Cancel')}
                   </Button>
                   <Button
                     className="secondary-btn"
@@ -759,7 +759,7 @@ export const AuctionCard = ({
                     {loading || !accountByMint.get(QUOTE_MINT.toBase58()) ? (
                       <Spin />
                     ) : (
-                      i18n._('Bid now')
+                      /*i18n*/ i18n._('Bid now')
                     )}
                   </Button>
                 </div>
@@ -813,28 +813,28 @@ export const AuctionCard = ({
             onClick={connect}
             style={{ marginTop: 20 }}
           >
-            {i18n._("Connect wallet to")}{' '}
-            {auctionView.isInstantSale ? i18n._('purchase') : i18n._('place bid')}
+            {/*i18n*/ i18n._("Connect wallet to")}{' '}
+            {auctionView.isInstantSale ? /*i18n*/ i18n._('purchase') : /*i18n*/ i18n._('place bid')}
           </Button>
         )}
         {action}
         {showRedemptionIssue && (
           <span style={{ color: 'red' }}>
-            {i18n._("There was an issue redeeming or refunding your bid. Please try again.")}
+            {/*i18n*/ i18n._("There was an issue redeeming or refunding your bid. Please try again.")}
           </span>
         )}
         {tickSizeInvalid && tickSize && (
           <span style={{ color: 'red' }}>
-            {i18n._("Tick size is ◎ {amount}", { amount: tickSize.toNumber() / LAMPORTS_PER_MINT })}
+            {/*i18n*/ i18n._("Tick size is ◎ {amount}", { amount: tickSize.toNumber() / LAMPORTS_PER_MINT })}
           </span>
         )}
         {gapBidInvalid && (
           <span style={{ color: 'red' }}>
-            {i18n._("Your bid needs to be at least {gapTick}% larger than an existing bid during gap periods to be eligible.")}
+            {/*i18n*/ i18n._("Your bid needs to be at least {gapTick}% larger than an existing bid during gap periods to be eligible.")}
           </span>
         )}
         {!loading && value !== undefined && showPlaceBid && invalidBid && (
-          <span style={{ color: 'red' }}>{i18n._("Invalid amount")}</span>
+          <span style={{ color: 'red' }}>{/*i18n*/ i18n._("Invalid amount")}</span>
         )}
       </div>
 
@@ -847,7 +847,7 @@ export const AuctionCard = ({
             marginBottom: 20,
           }}
         >
-          {i18n._("Nice bid!")}
+          {/*i18n*/ i18n._("Nice bid!")}
         </h1>
         <p
           style={{
@@ -856,7 +856,7 @@ export const AuctionCard = ({
             fontSize: '2rem',
           }}
         >
-          {i18n._("Your bid of ◎ {amount} was successful", { amount: formatTokenAmount(lastBid?.amount, mintInfo) })}
+          {/*i18n*/ i18n._("Your bid of ◎ {amount} was successful", { amount: formatTokenAmount(lastBid?.amount, mintInfo) })}
         </p>
         <Button onClick={() => setShowBidPlaced(false)} className="overlay-btn">
           Got it
@@ -872,7 +872,7 @@ export const AuctionCard = ({
             marginBottom: 20,
           }}
         >
-          {i18n._("Congratulations")}
+          {/*i18n*/ i18n._("Congratulations")}
         </h1>
         <p
           style={{
@@ -881,14 +881,14 @@ export const AuctionCard = ({
             fontSize: '2rem',
           }}
         >
-          {i18n._("Your sale has been ended please view your NFTs in")}{' '}
-          <Link to="/artworks">{i18n._("My Items")}</Link>.
+          {/*i18n*/ i18n._("Your sale has been ended please view your NFTs in")}{' '}
+          <Link to="/artworks">{/*i18n*/ i18n._("My Items")}</Link>.
         </p>
         <Button
           onClick={() => setShowEndingBidModal(false)}
           className="overlay-btn"
         >
-          {i18n._("Got it")}
+          {/*i18n*/ i18n._("Got it")}
         </Button>
       </MetaplexOverlay>
 
@@ -901,7 +901,7 @@ export const AuctionCard = ({
             marginBottom: 20,
           }}
         >
-          {i18n._("Congratulations")}
+          {/*i18n*/ i18n._("Congratulations")}
         </h1>
         <p
           style={{
@@ -910,15 +910,15 @@ export const AuctionCard = ({
             fontSize: '2rem',
           }}
         >
-          {i18n._("Your {type} has been redeemed please view your NFTs in", { type: auctionView.isInstantSale ? i18n._('purchase') : i18n._('bid')})}
-          <Link to="/artworks">{i18n._("My Items")}</Link>
+          {/*i18n*/ i18n._("Your {type} has been redeemed please view your NFTs in", { type: auctionView.isInstantSale ? /*i18n*/ i18n._('purchase') : /*i18n*/ i18n._('bid')})}
+          <Link to="/artworks">{/*i18n*/ i18n._("My Items")}</Link>
           .
         </p>
         <Button
           onClick={() => setShowRedeemedBidModal(false)}
           className="overlay-btn"
         >
-          {i18n._("Got it")}
+          {/*i18n*/ i18n._("Got it")}
         </Button>
       </MetaplexOverlay>
 
@@ -930,7 +930,7 @@ export const AuctionCard = ({
         }}
       >
         <h3 style={{ color: 'white' }}>
-          {i18n._(
+          {/*i18n*/ i18n._(
             "Warning: There may be some items in this auction that still are required by the auction for printing bidders' limited or open edition NFTs. If you wish to withdraw them, you are agreeing to foot the cost of up to an estimated ◎{amount} plus transaction fees to redeem their bids for them right now.",
             { amount: (printingCost || 0) / LAMPORTS_PER_MINT }
           )}

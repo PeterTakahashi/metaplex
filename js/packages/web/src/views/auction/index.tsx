@@ -650,7 +650,7 @@ export const AuctionBids = ({
   return (
     <Row>
       <Col className="bids-lists">
-        <h6 className={'info-title'}>{i18n._("Bid history")}</h6>
+        <h6 className={'info-title'}>{/*i18n*/ i18n._("Bid history")}</h6>
         {bidLines.slice(0, 10)}
         {bids.length > 10 && (
           <div
@@ -660,13 +660,13 @@ export const AuctionBids = ({
               cursor: 'pointer',
             }}
           >
-            {i18n._("View full history")}
+            {/*i18n*/ i18n._("View full history")}
           </div>
         )}
         <MetaplexModal
           visible={showHistoryModal}
           onCancel={() => setShowHistoryModal(false)}
-          title={i18n._("Bid history")}
+          title={/*i18n*/ i18n._("Bid history")}
           bodyStyle={{
             background: 'unset',
             boxShadow: 'unset',

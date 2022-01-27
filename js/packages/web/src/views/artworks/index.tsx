@@ -71,12 +71,12 @@ export const ArtworksView = () => {
       overlay={
         <Menu className="gray-dropdown">
           <Menu.Item onClick={() => pullAllMetadata()}>
-            {i18n._("Load All Metadata")}
+            {/*i18n*/ i18n._("Load All Metadata")}
           </Menu.Item>
         </Menu>
       }
     >
-      {i18n._("Refresh")}
+      {/*i18n*/ i18n._("Refresh")}
     </Dropdown.Button>
   );
 
@@ -91,14 +91,14 @@ export const ArtworksView = () => {
               tabBarExtraContent={refreshButton}
             >
               <TabPane
-                tab={<span className="tab-title">{i18n._("All")}</span>}
+                tab={<span className="tab-title">{/*i18n*/ i18n._("All")}</span>}
                 key={ArtworkViewState.Metaplex}
               >
                 {artworkGrid}
               </TabPane>
               {connected && (
                 <TabPane
-                  tab={<span className="tab-title">{i18n._("Owned")}</span>}
+                  tab={<span className="tab-title">{/*i18n*/ i18n._("Owned")}</span>}
                   key={ArtworkViewState.Owned}
                 >
                   {artworkGrid}
@@ -106,7 +106,7 @@ export const ArtworksView = () => {
               )}
               {connected && (
                 <TabPane
-                  tab={<span className="tab-title">{i18n._("Created")}</span>}
+                  tab={<span className="tab-title">{/*i18n*/ i18n._("Created")}</span>}
                   key={ArtworkViewState.Created}
                 >
                   {artworkGrid}

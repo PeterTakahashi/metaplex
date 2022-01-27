@@ -36,7 +36,7 @@ export const ConnectButton = (props: ConnectButtonProps) => {
         }}
         disabled={connected && disabled}
       >
-        {connected ? children : i18n._('Connect Wallet')}
+        {connected ? children : /*i18n*/ i18n._('Connect Wallet')}
       </Button>
     );
   }
@@ -48,11 +48,11 @@ export const ConnectButton = (props: ConnectButtonProps) => {
       disabled={connected && disabled}
       overlay={
         <Menu className={'black-dropdown'}>
-          <Menu.Item onClick={open}>{i18n._('Change Wallet')}</Menu.Item>
+          <Menu.Item onClick={open}>{/*i18n*/ i18n._('Change Wallet')}</Menu.Item>
         </Menu>
       }
     >
-      {i18n._("Connect")}
+      {/*i18n*/ i18n._("Connect")}
     </Dropdown.Button>
   );
 };
