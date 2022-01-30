@@ -52,8 +52,12 @@ export const MetaplexMenu = () => {
   if (width < 768)
     return (
       <>
+        
         <Modal
-          title={<img src={'/metaplex-logo.svg'} />}
+          title={process.env.SERVICE_NAME ?
+                  (<div>{process.env.SERVICE_NAME}</div>) :
+                  <img src={'/metaplex-logo.svg'} />
+                }
           visible={isModalVisible}
           footer={null}
           className={'modal-box'}

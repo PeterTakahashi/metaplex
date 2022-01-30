@@ -1,5 +1,5 @@
 export const LABELS = {
-  STORE_NAME: 'NFTArtX',
+  STORE_NAME: process.env.SERVICE_NAME || 'NFTArtX',
   CONNECT_LABEL: 'Connect Wallet',
   GIVE_SOL: 'Give me SOL',
   FAUCET_INFO:

@@ -6,6 +6,7 @@ import { Footer } from '../Footer';
 
 const { Header, Content } = Layout;
 
+// eslint-disable-next-line react/display-name
 export const AppLayout = React.memo((props: any) => {
   return (
     <>
@@ -27,7 +28,7 @@ export const AppLayout = React.memo((props: any) => {
             {props.children}
           </Content>
         </Layout>
-        {/*<Footer />*/}
+        <Footer />
       </Layout>
     </>
   );

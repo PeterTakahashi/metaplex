@@ -9,49 +9,49 @@ export const footerConf = {
       links: [
         {
           label: 'About',
-          url: 'www.solana.com',
+          url: 'https://outsource-systems.com/',
         },
-        {
-          label: 'Terms of service',
-          url: 'www.solana.com',
-        },
+        // {
+        //   label: 'Terms of service',
+        //   url: 'https://www.solana.com',
+        // },
       ],
     },
-    {
-      title: 'Help',
-      links: [
-        {
-          label: 'FAQ',
-          url: 'www.solana.com',
-        },
-        {
-          label: 'Support',
-          url: 'www.solana.com',
-        },
-        {
-          label: 'Privacy policy',
-          url: 'www.solana.com',
-        },
-        {
-          label: 'Your purchases',
-          url: 'www.solana.com',
-        },
-      ],
-    },
+    // {
+    //   title: 'Help',
+    //   links: [
+    //     {
+    //       label: 'FAQ',
+    //       url: 'https://www.solana.com',
+    //     },
+    //     {
+    //       label: 'Support',
+    //       url: 'https://www.solana.com',
+    //     },
+    //     {
+    //       label: 'Privacy policy',
+    //       url: 'https://www.solana.com',
+    //     },
+    //     {
+    //       label: 'Your purchases',
+    //       url: 'https://www.solana.com',
+    //     },
+    //   ],
+    // },
     {
       title: 'Follow us',
       links: [
-        {
-          label: 'Instagram',
-          url: 'www.solana.com',
-        },
-        {
-          label: 'Twitter',
-          url: 'www.solana.com',
-        },
+        // {
+        //   label: 'Instagram',
+        //   url: 'https://www.solana.com',
+        // },
+        // {
+        //   label: 'Twitter',
+        //   url: 'https://www.solana.com',
+        // },
         {
           label: 'Discord',
-          url: 'www.solana.com',
+          url: 'https://discord.gg/Vutuj6WQ',
         },
       ],
     },
