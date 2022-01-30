@@ -38,7 +38,7 @@ export const Settings = ({
         />
         {publicKey && (
           <>
-            <Tooltip title={i18n._("Address copied")}>
+            <Tooltip title={/*i18n*/ i18n._("Address copied")}>
               <div
                 style={{
                   fontWeight: 600,
