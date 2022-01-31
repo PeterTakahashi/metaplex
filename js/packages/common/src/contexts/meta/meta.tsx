@@ -28,11 +28,14 @@ import {
   pullPack,
 } from '.';
 import { StringPublicKey, TokenAccount, useUserAccounts } from '../..';
+import MainAccountDetail from '../../types/mainAccountDetail';
+import { getTransaction } from '../../utils/arweave';
 
 const MetaContext = React.createContext<MetaContextState>({
   ...getEmptyMetaState(),
   isLoading: false,
   isFetching: false,
+  mainAccountDetail: undefined,
   // @ts-ignore
   update: () => [AuctionData, BidderMetadata, BidderPot],
 });
@@ -45,6 +48,7 @@ export function MetaProvider({ children = null as any }) {
   const [state, setState] = useState<MetaState>(getEmptyMetaState());
   const [page, setPage] = useState(0);
   const [lastLength, setLastLength] = useState(0);
+  const [mainAccountDetail, setMainAccountDetail] = useState<MainAccountDetail>();
   const { userAccounts } = useUserAccounts();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -231,6 +235,11 @@ export function MetaProvider({ children = null as any }) {
     );
     console.log('-----> Query started');
 
+    if (process.env.MAIN_ACCOUNT_ARWEAVE_TRANSACTION) {
+      const mainAccountDetail = await getTransaction(process.env.MAIN_ACCOUNT_ARWEAVE_TRANSACTION);
+      setMainAccountDetail(JSON.parse(mainAccountDetail));
+    }
+
     if (nextState.storeIndexer.length) {
       if (USE_SPEED_RUN) {
         nextState = await limitedLoadAccounts(connection);
@@ -380,6 +389,7 @@ export function MetaProvider({ children = null as any }) {
         pullUserMetadata,
         isLoading,
         isFetching,
+        mainAccountDetail,
       }}
     >
       {children}

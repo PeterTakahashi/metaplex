@@ -29,44 +29,48 @@ export enum LiveAuctionViewState {
 
 export const SalesListView = () => {
   const [activeKey, setActiveKey] = useState(LiveAuctionViewState.All);
-  const { isLoading } = useMeta();
+  const { isLoading, mainAccountDetail } = useMeta();
   const { connected } = useWallet();
   const { auctions, hasResaleAuctions } = useAuctionsList(activeKey);
-  
+
   const accoutDetail = () => (
     <div className='account-container'>
-        <img className='account-banner' src={process.env.BANNER_IMG_URL} />
-        <div className='account-content'>
-          <div className="account-avater">
-            <Avatar className='account-avater-icon' size={100} icon={<UserOutlined />} src={process.env.PROFILE_IMG_URL} />
+      {mainAccountDetail?.bannerImgUrl ? <img className='account-banner' src={mainAccountDetail?.bannerImgUrl} /> : null}
+      <div className='account-content'>
+        {mainAccountDetail?.profileImgUrl ?
+          (<div className="account-avater">
+            <Avatar className='account-avater-icon' size={100} icon={<UserOutlined />} src={mainAccountDetail?.profileImgUrl} />
+          </div>)
+          :
+          null
+        }
+        <div>
+          <div className='account-name'>
+            {mainAccountDetail?.accountName ? mainAccountDetail?.accountName : null}
           </div>
-          <div>
-            <div className='account-name'>
-              {process.env.ACCOUNT_NAME}
-            </div>
-            <div className='account-description'>{process.env.ACCOUNT_DESCRIPTION}</div>
-            <div className='account-links'>
-              {process.env.TWITTER_URL ? (<a href={process.env.TWITTER_URL} target="_blank" rel="noreferrer">
-                <TwitterOutlined />
-              </a>) : null}
-              {process.env.INSTAGRAM_URL ? (<a href={process.env.INSTAGRAM_URL} target="_blank" rel="noreferrer">
-                <InstagramOutlined />
-              </a>) : null}
-              {process.env.SPOTIFY_URL ? (<a href={process.env.SPOTIFY_URL} target="_blank" rel="noreferrer">
-                <BsSpotify />
-              </a>) : null}
-              {process.env.WEB_URL ? (<a href={process.env.WEB_URL} target="_blank" rel="noreferrer">
-                <LinkOutlined />
-              </a>) : null}
-            </div>
+          <div className='account-description'>{mainAccountDetail?.accountDescription ? mainAccountDetail?.accountDescription : null}</div>
+          <div className='account-links'>
+            {mainAccountDetail?.twitterUrl ? (<a href={mainAccountDetail?.twitterUrl} target="_blank" rel="noreferrer">
+              <TwitterOutlined />
+            </a>) : null}
+            {mainAccountDetail?.instagramUrl ? (<a href={mainAccountDetail?.instagramUrl} target="_blank" rel="noreferrer">
+              <InstagramOutlined />
+            </a>) : null}
+            {mainAccountDetail?.spotifyUrl ? (<a href={mainAccountDetail?.spotifyUrl} target="_blank" rel="noreferrer">
+              <BsSpotify />
+            </a>) : null}
+            {mainAccountDetail?.webUrl ? (<a href={mainAccountDetail?.webUrl} target="_blank" rel="noreferrer">
+              <LinkOutlined />
+            </a>) : null}
           </div>
         </div>
       </div>
+    </div>
   );
 
   return (
     <>
-      {process.env.IS_ACCOUNT_MAIN ?
+      {process.env.MAIN_ACCOUNT_ARWEAVE_TRANSACTION ?
         accoutDetail() : (
         <Banner
           src="/main-banner.svg"

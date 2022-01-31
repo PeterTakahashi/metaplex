@@ -11,6 +11,10 @@ export const footerConf = {
           label: 'About',
           url: 'https://outsource-systems.com/',
         },
+        {
+          label: 'Contact',
+          url: 'https://outsource-systems.com/',
+        },
         // {
         //   label: 'Terms of service',
         //   url: 'https://www.solana.com',

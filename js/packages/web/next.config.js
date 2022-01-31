@@ -73,7 +73,8 @@ module.exports = withPlugins(plugins, {
     ACCOUNT_DESCRIPTION: process.env.ACCOUNT_DESCRIPTION,
 
     SERVICE_NAME: process.env.SERVICE_NAME,
-    CAMPANY_NAME: process.env.CAMPANY_NAME
+    CAMPANY_NAME: process.env.CAMPANY_NAME,
+    MAIN_ACCOUNT_ARWEAVE_TRANSACTION: process.env.MAIN_ACCOUNT_ARWEAVE_TRANSACTION
   },
   async rewrites() {
     return [
