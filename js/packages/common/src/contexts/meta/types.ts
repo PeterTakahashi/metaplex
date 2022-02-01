@@ -31,6 +31,7 @@ import { PackVoucher } from '../../models/packs/accounts/PackVoucher';
 import { ProvingProcess } from '../../models/packs/accounts/ProvingProcess';
 import { PublicKeyStringAndAccount, StringPublicKey } from '../../utils';
 import { ParsedAccount } from '../accounts/types';
+import MainAccountDetail from '../../types/mainAccountDetail';
 
 export interface MetaState {
   metadata: ParsedAccount<Metadata>[];
@@ -93,6 +94,7 @@ export interface MetaState {
 export interface MetaContextState extends MetaState {
   isLoading: boolean;
   isFetching: boolean;
+  mainAccountDetail?: MainAccountDetail;
   update: (
     auctionAddress?: any,
     bidderAddress?: any,

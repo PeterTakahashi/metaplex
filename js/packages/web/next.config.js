@@ -60,6 +60,21 @@ module.exports = withPlugins(plugins, {
     NEXT_CG_SPL_TOKEN_IDS: process.env.CG_SPL_TOKEN_IDS,
     NEXT_ENABLE_NFT_PACKS: process.env.REACT_APP_ENABLE_NFT_PACKS,
     NEXT_ENABLE_NFT_PACKS_REDEEM: process.env.REACT_APP_ENABLE_NFT_PACKS_REDEEM,
+
+    // account detail info
+    TWITTER_URL: process.env.TWITTER_URL,
+    SPOTIFY_URL: process.env.SPOTIFY_URL,
+    INSTAGRAM_URL: process.env.INSTAGRAM_URL,
+    WEB_URL: process.env.WEB_URL,
+    IS_ACCOUNT_MAIN: process.env.IS_ACCOUNT_MAIN,
+    PROFILE_IMG_URL: process.env.PROFILE_IMG_URL,
+    BANNER_IMG_URL: process.env.BANNER_IMG_URL,
+    ACCOUNT_NAME: process.env.ACCOUNT_NAME,
+    ACCOUNT_DESCRIPTION: process.env.ACCOUNT_DESCRIPTION,
+
+    SERVICE_NAME: process.env.SERVICE_NAME,
+    CAMPANY_NAME: process.env.CAMPANY_NAME,
+    MAIN_ACCOUNT_ARWEAVE_TRANSACTION: process.env.MAIN_ACCOUNT_ARWEAVE_TRANSACTION
   },
   async rewrites() {
     return [

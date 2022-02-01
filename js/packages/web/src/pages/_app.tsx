@@ -40,7 +40,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <I18nProvider i18n={i18n} forceRenderOnLocaleChange={false}>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Metaplex NFT Marketplace</title>
+        <title>NFTArtX NFT Marketplace</title>
       </Head>
       <div id="root">
         <Component {...pageProps} />

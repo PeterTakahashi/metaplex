@@ -1,5 +1,7 @@
 import { useWallet } from '@solana/wallet-adapter-react';
-import { Col, Layout, Row, Tabs } from 'antd';
+import { Col, Layout, Row, Tabs, Avatar } from 'antd';
+import { UserOutlined, TwitterOutlined, InstagramOutlined, LinkOutlined } from '@ant-design/icons';
+import { BsSpotify } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import { i18n } from "@lingui/core"
@@ -27,19 +29,57 @@ export enum LiveAuctionViewState {
 
 export const SalesListView = () => {
   const [activeKey, setActiveKey] = useState(LiveAuctionViewState.All);
-  const { isLoading } = useMeta();
+  const { isLoading, mainAccountDetail } = useMeta();
   const { connected } = useWallet();
   const { auctions, hasResaleAuctions } = useAuctionsList(activeKey);
 
+  const accoutDetail = () => (
+    <div className='account-container'>
+      {mainAccountDetail?.bannerImgUrl ? <img className='account-banner' src={mainAccountDetail?.bannerImgUrl} /> : null}
+      <div className='account-content'>
+        {mainAccountDetail?.profileImgUrl ?
+          (<div className="account-avater">
+            <Avatar className='account-avater-icon' icon={<UserOutlined />} src={mainAccountDetail?.profileImgUrl} />
+          </div>)
+          :
+          null
+        }
+        <div>
+          <div className='account-name'>
+            {mainAccountDetail?.accountName ? mainAccountDetail?.accountName : null}
+          </div>
+          <div className='account-description'>{mainAccountDetail?.accountDescription ? mainAccountDetail?.accountDescription : null}</div>
+          <div className='account-links'>
+            {mainAccountDetail?.twitterUrl ? (<a href={mainAccountDetail?.twitterUrl} target="_blank" rel="noreferrer">
+              <TwitterOutlined />
+            </a>) : null}
+            {mainAccountDetail?.instagramUrl ? (<a href={mainAccountDetail?.instagramUrl} target="_blank" rel="noreferrer">
+              <InstagramOutlined />
+            </a>) : null}
+            {mainAccountDetail?.spotifyUrl ? (<a href={mainAccountDetail?.spotifyUrl} target="_blank" rel="noreferrer">
+              <BsSpotify />
+            </a>) : null}
+            {mainAccountDetail?.webUrl ? (<a href={mainAccountDetail?.webUrl} target="_blank" rel="noreferrer">
+              <LinkOutlined />
+            </a>) : null}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <>
-      <Banner
-        src="/main-banner.svg"
-        headingText={/*i18n*/ i18n._("The amazing world of {name}", { name: LABELS.STORE_NAME })}
-        subHeadingText={/*i18n*/ i18n._("Buy exclusive {name} NFTs.", { name: LABELS.STORE_NAME })}
-        actionComponent={<HowToBuyModal buttonClassName="secondary-btn" />}
-        useBannerBg
-      />
+      {process.env.MAIN_ACCOUNT_ARWEAVE_TRANSACTION ?
+        accoutDetail() : (
+        <Banner
+          src="/main-banner.svg"
+          headingText={/*i18n*/ i18n._("The amazing world of {name}", { name: LABELS.STORE_NAME })}
+          subHeadingText={/*i18n*/ i18n._("Buy exclusive {name} NFTs.", { name: LABELS.STORE_NAME })}
+          actionComponent={<HowToBuyModal buttonClassName="secondary-btn" />}
+          useBannerBg
+        />
+      )}
       <Layout>
         <Content style={{ display: 'flex', flexWrap: 'wrap' }}>
           <Col style={{ width: '100%', marginTop: 32 }}>

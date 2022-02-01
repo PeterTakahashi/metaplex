@@ -27,6 +27,9 @@ const getDefaultLinkActions = (connected: boolean) => {
     <Link to={`/artists`} key={'artists'}>
       <Button className="app-btn">{/*i18n*/ i18n._('Creators')}</Button>
     </Link>,
+    <a href={`https://docs.google.com/forms/d/e/1FAIpQLSfouCcSC0fJy4gJxaKm6Vcw-fGUSWZZaWtWbe5hSM9cH2uCRw/viewform?usp=sf_link`} target={'_blank'} key={'createStore'} rel="noreferrer">
+      <Button className="app-btn">{/*i18n*/ i18n._('Create Store')}</Button>
+    </a>
   ];
 };
 
@@ -52,8 +55,12 @@ export const MetaplexMenu = () => {
   if (width < 768)
     return (
       <>
+        
         <Modal
-          title={<img src={'/metaplex-logo.svg'} />}
+          title={process.env.SERVICE_NAME ?
+                  (<div>{process.env.SERVICE_NAME}</div>) :
+                  <img src={'/metaplex-logo.svg'} />
+                }
           visible={isModalVisible}
           footer={null}
           className={'modal-box'}
