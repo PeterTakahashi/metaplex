@@ -39,7 +39,7 @@ export const SalesListView = () => {
       <div className='account-content'>
         {mainAccountDetail?.profileImgUrl ?
           (<div className="account-avater">
-            <Avatar className='account-avater-icon' size={100} icon={<UserOutlined />} src={mainAccountDetail?.profileImgUrl} />
+            <Avatar className='account-avater-icon' icon={<UserOutlined />} src={mainAccountDetail?.profileImgUrl} />
           </div>)
           :
           null
