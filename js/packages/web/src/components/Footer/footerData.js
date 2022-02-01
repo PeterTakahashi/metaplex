@@ -13,7 +13,7 @@ export const footerConf = {
         },
         {
           label: 'Contact',
-          url: 'https://outsource-systems.com/',
+          url: 'https://docs.google.com/forms/d/e/1FAIpQLSe3kaxh_NiN_upXNuUK8BEGAHnnYl4CDrgcaMza3YYxF-7Exg/viewform?usp=sf_link',
         },
         // {
         //   label: 'Terms of service',
