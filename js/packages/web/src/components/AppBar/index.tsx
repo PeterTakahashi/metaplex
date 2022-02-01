@@ -27,9 +27,9 @@ const getDefaultLinkActions = (connected: boolean) => {
     <Link to={`/artists`} key={'artists'}>
       <Button className="app-btn">{/*i18n*/ i18n._('Creators')}</Button>
     </Link>,
-    <Link to={`https://docs.google.com/forms/d/e/1FAIpQLSfouCcSC0fJy4gJxaKm6Vcw-fGUSWZZaWtWbe5hSM9cH2uCRw/viewform?usp=sf_link`} key={'createStore'}>
+    <a href={`https://docs.google.com/forms/d/e/1FAIpQLSfouCcSC0fJy4gJxaKm6Vcw-fGUSWZZaWtWbe5hSM9cH2uCRw/viewform?usp=sf_link`} target={'_blank'} key={'createStore'} rel="noreferrer">
       <Button className="app-btn">{/*i18n*/ i18n._('Create Store')}</Button>
-    </Link>,
+    </a>
   ];
 };
 
