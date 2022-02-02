@@ -29,7 +29,7 @@ import {
 } from '.';
 import { StringPublicKey, TokenAccount, useUserAccounts } from '../..';
 import MainAccountDetail from '../../types/mainAccountDetail';
-import { getTransaction } from '../../utils/arweave';
+import { getArweaveData } from '../../utils/arweave';
 
 const MetaContext = React.createContext<MetaContextState>({
   ...getEmptyMetaState(),
@@ -235,11 +235,6 @@ export function MetaProvider({ children = null as any }) {
     );
     console.log('-----> Query started');
 
-    if (process.env.MAIN_ACCOUNT_ARWEAVE_TRANSACTION) {
-      const mainAccountDetail = await getTransaction(process.env.MAIN_ACCOUNT_ARWEAVE_TRANSACTION);
-      setMainAccountDetail(JSON.parse(mainAccountDetail));
-    }
-
     if (nextState.storeIndexer.length) {
       if (USE_SPEED_RUN) {
         nextState = await limitedLoadAccounts(connection);
@@ -292,9 +287,12 @@ export function MetaProvider({ children = null as any }) {
       }
     } else {
       console.log('------->No pagination detected');
-      nextState = !USE_SPEED_RUN
+      if (state.store) {
+        nextState = !USE_SPEED_RUN
         ? await loadAccounts(connection)
         : await limitedLoadAccounts(connection);
+      }
+
 
       console.log('------->Query finished');
 
@@ -306,6 +304,14 @@ export function MetaProvider({ children = null as any }) {
     }
 
     console.log('------->set finished');
+
+    if (process.env.MAIN_ACCOUNT_ARWEAVE_TRANSACTION) {
+      console.log(`MAIN_ACCOUNT_ARWEAVE_TRANSACTION is ${process.env.MAIN_ACCOUNT_ARWEAVE_TRANSACTION}`);
+      const mainAccountDetail = await getArweaveData(process.env.MAIN_ACCOUNT_ARWEAVE_TRANSACTION);
+      setMainAccountDetail(mainAccountDetail);
+    } else {
+      console.log('nothing MAIN_ACCOUNT_ARWEAVE_TRANSACTION');
+    }
 
     if (auctionAddress && bidderAddress) {
       nextState = await pullAuctionSubaccounts(

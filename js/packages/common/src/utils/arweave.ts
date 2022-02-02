@@ -1,28 +1,11 @@
-import Arweave from 'arweave';
+const ARWEAVE_DOMAIN = 'https://arweave.net/';
 
-/**
- * Create an Arweave instance with sane defaults.
- */
-function getArweave(): Arweave {
-  return new Arweave({
-    host: 'arweave.net',
-    port: 443,
-    protocol: 'https',
-    timeout: 20000,
-    logging: false,
-    logger: console.log,
-  });
-}
-
-export const getTransaction = async (transactionKey: string) => {
+export const getArweaveData = async (transactionKey: string) => {
   try {
-    const arweave = getArweave();
-    const transaction = await arweave.transactions
-      .getData(transactionKey, { decode: true, string: true })
-      .then((transaction: any) => {
-        return transaction;
-      });
-    return transaction;
+    const getData = fetch(`${ARWEAVE_DOMAIN}${transactionKey}`)
+      .then(response => response.json())
+      .then(data => data);
+    return getData;
   } catch {
     return undefined;
   }
