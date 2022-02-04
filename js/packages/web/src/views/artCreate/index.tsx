@@ -48,6 +48,7 @@ import {
   PlusOutlined,
 } from '@ant-design/icons';
 import { useTokenList } from '../../contexts/tokenList';
+import { LABELS } from '../../constants';
 
 const { Step } = Steps;
 const { Dragger } = Upload;
@@ -241,7 +242,7 @@ const CategoryStep = (props: {
       <Row className="call-to-action">
         <h2>Create a new item</h2>
         <p>
-          First time creating on Metaplex?{' '}
+          First time creating on {LABELS.STORE_NAME}{' '}
           <a href="https://docs.metaplex.com/create-store/sell" target="_blank" rel="noreferrer">
             Read our creators’ guide.
           </a>
@@ -1281,13 +1282,13 @@ const Congrats = (props: {
 
   const newTweetURL = () => {
     const params = {
-      text: "I've created a new NFT artwork on Metaplex, check it out!",
+      text: `I've created a new NFT artwork on ${LABELS.STORE_NAME}, check it out!`,
       url: `${
         window.location.origin
       }/#/art/${props.nft?.metadataAccount.toString()}`,
-      hashtags: 'NFT,Crypto,Metaplex',
+      hashtags: `NFT,Crypto,${LABELS.STORE_NAME}`,
       // via: "Metaplex",
-      related: 'Metaplex,Solana',
+      related: `${LABELS.STORE_NAME},Solana`,
     };
     const queryParams = new URLSearchParams(params).toString();
     return `https://twitter.com/intent/tweet?${queryParams}`;

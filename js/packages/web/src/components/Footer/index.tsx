@@ -96,7 +96,7 @@ export const Footer = () => {
             <div className="sub-header">
               {LABELS.STORE_NAME} NFT Marketplace
             </div>
-            <div className="footer-link">Powered by Metaplex and Solana</div>
+            <div className="footer-link">Powered by <a href='https://www.metaplex.com/'>Metaplex</a> and <a href='https://solana.com'>Solana</a></div>
           </div>
         ) : null}
         {footerConf.components.map(component => (
@@ -104,25 +104,25 @@ export const Footer = () => {
             <div className="sub-header">{component.title}</div>
             {component.links.map(link => (
               <div className="body-text">
-                <a href={link.url} target="_blank" className="footer-link">
+                <a href={link.url} target="_blank" className="footer-link" rel="noreferrer">
                   {link.label}
                 </a>
               </div>
             ))}
           </div>
         ))}
-        {footerConf.showEmailSubscriber ? (
+        {/* {footerConf.showEmailSubscriber ? (
           <div className="footer-section-container subscriber-container">
             <div className="subscriber-text">
               {footerConf.emailSubscriberText}
             </div>
             <NewsLetterForm />
           </div>
-        ) : null}
+        ) : null} */}
       </div>
       <div className="footer-foot">
         <div className="small-body footer-link">
-          2021 {LABELS.STORE_NAME} LLC, All rights reserved
+          2021 {process.env.CAMPANY_NAME} LLC, All rights reserved
         </div>
       </div>
     </div>

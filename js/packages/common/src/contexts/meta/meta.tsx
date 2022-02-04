@@ -28,6 +28,8 @@ import {
   pullPack,
 } from '.';
 import { StringPublicKey, TokenAccount, useUserAccounts } from '../..';
+import MainAccountDetail from '../../types/mainAccountDetail';
+import { getArweaveData } from '../../utils/arweave';
 
 const MetaContext = React.createContext<MetaContextState>({
   ...getEmptyMetaState(),
@@ -46,6 +48,7 @@ export function MetaProvider({ children = null as any }) {
   const [page, setPage] = useState(0);
   const [lastLength, setLastLength] = useState(0);
   const { userAccounts } = useUserAccounts();
+  const [mainAccountDetail, setMainAccountDetail] = useState<MainAccountDetail>();
 
   const [isLoading, setIsLoading] = useState(false);
   const updateRequestsInQueue = useRef(0);
@@ -298,6 +301,14 @@ export function MetaProvider({ children = null as any }) {
 
     console.log('------->set finished');
 
+    if (process.env.MAIN_ACCOUNT_ARWEAVE_TRANSACTION) {
+      console.log(`MAIN_ACCOUNT_ARWEAVE_TRANSACTION is ${process.env.MAIN_ACCOUNT_ARWEAVE_TRANSACTION}`);
+      const mainAccountDetail = await getArweaveData(process.env.MAIN_ACCOUNT_ARWEAVE_TRANSACTION);
+      setMainAccountDetail(mainAccountDetail);
+    } else {
+      console.log('nothing MAIN_ACCOUNT_ARWEAVE_TRANSACTION');
+    }
+
     if (auctionAddress && bidderAddress) {
       nextState = await pullAuctionSubaccounts(
         connection,
@@ -380,6 +391,7 @@ export function MetaProvider({ children = null as any }) {
         pullUserMetadata,
         isLoading,
         isFetching,
+        mainAccountDetail,
       }}
     >
       {children}
