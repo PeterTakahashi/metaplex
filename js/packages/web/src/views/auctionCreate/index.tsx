@@ -62,7 +62,7 @@ import { useTokenList } from '../../contexts/tokenList';
 import { mintTo } from '@project-serum/serum/lib/token-instructions';
 import { TokenInfo } from '@solana/spl-token-registry'
 import { FundsIssueModal } from "../../components/FundsIssueModal";
-import LABELS from '../../../src/constants/labels'
+import { LABELS } from '../../constants/labels';
 
 const { Option } = Select;
 const { Step } = Steps;
