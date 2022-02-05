@@ -40,6 +40,10 @@ module.exports = withPlugins(plugins, {
     NEXT_CG_SPL_TOKEN_IDS: process.env.CG_SPL_TOKEN_IDS,
     NEXT_ENABLE_NFT_PACKS: process.env.REACT_APP_ENABLE_NFT_PACKS,
     NEXT_ENABLE_NFT_PACKS_REDEEM: process.env.REACT_APP_ENABLE_NFT_PACKS_REDEEM,
+
+    SERVICE_NAME: process.env.SERVICE_NAME,
+    CAMPANY_NAME: process.env.CAMPANY_NAME,
+    MAIN_ACCOUNT_ARWEAVE_TRANSACTION: process.env.MAIN_ACCOUNT_ARWEAVE_TRANSACTION
   },
   async rewrites() {
     return [
